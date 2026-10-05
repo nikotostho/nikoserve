@@ -1,5 +1,6 @@
 "use client";
 
+import { Fragment } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import type { PanelShellConfig } from "./panel-config";
@@ -44,9 +45,11 @@ export default function DashboardSidebar({ config }: Readonly<{ config: PanelShe
               const active = isActivePath(pathname, item.href, config.rootPath);
               return (
                 <Link key={item.href} href={item.href} className={`sb-item ${active ? "is-active" : ""}`}>
-                  {item.icon}
-                  <span className="lbl">{item.label}</span>
-                  {item.pill ? <span className="pill">{item.pill}</span> : null}
+                  <Fragment key="icon">{item.icon}</Fragment>
+                  <span className="lbl" key="label">{item.label}</span>
+                  {item.pill ? (
+                    <span className="pill" key="pill">{item.pill}</span>
+                  ) : null}
                 </Link>
               );
             })}
@@ -57,8 +60,8 @@ export default function DashboardSidebar({ config }: Readonly<{ config: PanelShe
           <p className="nav-title">Shortcuts</p>
           {config.shortcuts.map((item) => (
             <Link key={item.href} href={item.href} className="sb-item">
-              {item.icon}
-              <span className="lbl">{item.label}</span>
+              <Fragment key="icon">{item.icon}</Fragment>
+              <span className="lbl" key="label">{item.label}</span>
             </Link>
           ))}
         </div>

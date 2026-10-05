@@ -74,6 +74,14 @@ export type PanelShellConfig = {
     searchPlaceholder: string;
     /** Primary call-to-action on the left of the icon cluster. */
     primaryAction?: PanelTopbarAction;
+    /**
+     * Optional read-only status chip rendered before the notification bell.
+     * Only the Admin panel uses it ("All systems normal").
+     */
+    statusBadge?: {
+      label: string;
+      icon: ReactNode;
+    };
     /** Notification/message flyouts — omit for panels that do not have them. */
     notificationsHref?: string;
     notificationCount?: string;
