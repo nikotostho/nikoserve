@@ -33,7 +33,7 @@ export default function ProfilePage() {
       <div><label className="label">Date of birth</label><input type="date" className="input" defaultValue="1996-04-18" /></div>
       <div><label className="label">Gender</label><select className="select"><option>Female</option><option>Male</option><option>Other</option><option>Prefer not to say</option></select></div>
       <div><label className="label">Occupation</label><input className="input" defaultValue="Marketing Manager" /></div>
-      <div className="sm:col-span-2"><label className="label">Bio</label><textarea className="textarea !min-h-[80px]">Online shopping enthusiast from Dhaka. I love reviewing gadgets and home products.</textarea></div>
+      <div className="sm:col-span-2"><label className="label">Bio</label><textarea className="textarea !min-h-[80px]" defaultValue="Online shopping enthusiast from Dhaka. I love reviewing gadgets and home products."></textarea></div>
       <div><label className="label">Preferred language</label><select className="select"><option>English</option><option>বাংলা (Bangla)</option></select></div>
       <div><label className="label">Currency</label><select className="select"><option>BDT (৳)</option><option>USD ($)</option></select></div></div></div>
       <div className="card "><div className="card-head"><h3>Contact &amp; verification</h3><div className="flex items-center gap-2"></div></div><div className="p-5 space-y-3.5">
