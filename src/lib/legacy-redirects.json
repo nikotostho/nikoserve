@@ -1,0 +1,154 @@
+[
+  {
+    "source": "/index.html",
+    "destination": "/"
+  },
+  {
+    "source": "/about.html",
+    "destination": "/about"
+  },
+  {
+    "source": "/become-provider.html",
+    "destination": "/become-provider"
+  },
+  {
+    "source": "/become-seller.html",
+    "destination": "/become-seller"
+  },
+  {
+    "source": "/blog-details.html",
+    "destination": "/blog-details"
+  },
+  {
+    "source": "/blog.html",
+    "destination": "/blog"
+  },
+  {
+    "source": "/brands.html",
+    "destination": "/brands"
+  },
+  {
+    "source": "/careers.html",
+    "destination": "/careers"
+  },
+  {
+    "source": "/cart.html",
+    "destination": "/cart"
+  },
+  {
+    "source": "/categories.html",
+    "destination": "/categories"
+  },
+  {
+    "source": "/checkout.html",
+    "destination": "/checkout"
+  },
+  {
+    "source": "/compare.html",
+    "destination": "/compare"
+  },
+  {
+    "source": "/contact.html",
+    "destination": "/contact"
+  },
+  {
+    "source": "/faq.html",
+    "destination": "/faq"
+  },
+  {
+    "source": "/forgot-password.html",
+    "destination": "/forgot-password"
+  },
+  {
+    "source": "/help-center.html",
+    "destination": "/help-center"
+  },
+  {
+    "source": "/login.html",
+    "destination": "/login"
+  },
+  {
+    "source": "/offers.html",
+    "destination": "/offers"
+  },
+  {
+    "source": "/order-success.html",
+    "destination": "/order-success"
+  },
+  {
+    "source": "/otp-verify.html",
+    "destination": "/otp-verify"
+  },
+  {
+    "source": "/privacy-policy.html",
+    "destination": "/privacy-policy"
+  },
+  {
+    "source": "/product-details.html",
+    "destination": "/product-details"
+  },
+  {
+    "source": "/products.html",
+    "destination": "/products"
+  },
+  {
+    "source": "/provider-register.html",
+    "destination": "/provider-register"
+  },
+  {
+    "source": "/register.html",
+    "destination": "/register"
+  },
+  {
+    "source": "/reset-password.html",
+    "destination": "/reset-password"
+  },
+  {
+    "source": "/return-policy.html",
+    "destination": "/return-policy"
+  },
+  {
+    "source": "/search.html",
+    "destination": "/search"
+  },
+  {
+    "source": "/seller-register.html",
+    "destination": "/seller-register"
+  },
+  {
+    "source": "/service-details.html",
+    "destination": "/service-details"
+  },
+  {
+    "source": "/services.html",
+    "destination": "/services"
+  },
+  {
+    "source": "/shipping-policy.html",
+    "destination": "/shipping-policy"
+  },
+  {
+    "source": "/shop-profile.html",
+    "destination": "/shop-profile"
+  },
+  {
+    "source": "/shops.html",
+    "destination": "/shops"
+  },
+  {
+    "source": "/sitemap.html",
+    "destination": "/sitemap"
+  },
+  {
+    "source": "/terms.html",
+    "destination": "/terms"
+  },
+  {
+    "source": "/track-order.html",
+    "destination": "/track-order"
+  },
+  {
+    "source": "/404.html",
+    "destination": "/404"
+  }
+]

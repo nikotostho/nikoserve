@@ -1,0 +1,4 @@
+/* Inter and Plus Jakarta Sans are loaded once from app/layout.tsx. */
+.tabular {
+  font-variant-numeric: tabular-nums;
+}
