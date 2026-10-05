@@ -24,7 +24,7 @@ Customer account dashboard migrated from `user/*.html` templates.
 | `/user/support` | `features/user/pages/support-page.tsx` | Support tickets |
 | `/user/settings` | `features/user/pages/settings-page.tsx` | Security, privacy, sessions |
 
-All routes share `src/app/(panels)/user/layout.tsx` → `src/components/dashboard/dashboard-shell.tsx`.
+All routes share `src/app/(panels)/user/layout.tsx` → `src/components/dashboard/dashboard-shell.tsx` with `features/user/lib/user-panel-config.tsx`.
 
 ## Folder map
 
@@ -32,15 +32,18 @@ All routes share `src/app/(panels)/user/layout.tsx` → `src/components/dashboar
 src/app/(panels)/user/          # App Router: URL → layout + page files (thin)
 src/features/user/
   pages/                        # 15 migrated page components (presentation, static data)
-  components/                   # User-specific reusable UI (PageHeader, StatusBadge …)
+  lib/user-panel-config.tsx     # Sidebar nav, brand, topbar & identity for the shell
   types/user.ts                 # DTO placeholders — replace with OpenAPI output
   api/user-api.ts               # apiRequest wrappers — UI never calls fetch directly
   lib/constants.ts              # Panel-specific constants
 src/components/dashboard/       # Shared shell for User / Vendor / Admin
-  dashboard-shell.tsx
-  dashboard-sidebar.tsx         # Navigation with active state via usePathname
-  dashboard-topbar.tsx          # Search, notifications, messages, user menu
+  dashboard-shell.tsx           # Frame (sidebar + topbar + drawer + footer)
+  dashboard-sidebar.tsx         # Config-driven navigation with active state
+  dashboard-topbar.tsx          # Config-driven search, actions & flyouts
   dashboard-interactions.tsx    # Collapse / drawer behaviour
+  panel-config.ts               # PanelShellConfig contract — read this first
+  page-header.tsx               # Shared breadcrumb/title/actions header
+  status-badge.tsx              # Shared `st` status pill
 src/styles/dashboard.css        # Shell, stat cards, status pills, chat, calendar
 ```
 
@@ -53,21 +56,29 @@ src/styles/dashboard.css        # Shell, stat cards, status pills, chat, calenda
 - Types in `features/user/types` are placeholders derived from the static HTML sample data — replace them with the real NestJS DTOs when the contract is confirmed.
 - Layouts may add a server-side session check and redirect to `/login?next=/user/...` but NestJS must enforce ownership and role on every endpoint.
 
-## Adding Vendor / Admin later
+## Vendor / Admin panels
 
-Follow the same pattern:
+The Vendor panel follows the same pattern (see `src/features/vendor/README.md`).
+The Admin panel has a scaffold under `src/features/admin` waiting for its
+migration:
 
 ```
 src/app/(panels)/vendor/layout.tsx   # /vendor/* shell + role check
 src/app/(panels)/admin/layout.tsx    # /admin/* shell + permission check
-src/features/vendor/...
-src/features/admin/...
+src/features/vendor/...  src/features/admin/...
 ```
 
-Reuse `src/components/dashboard` for the shell and `src/components/shared` for neutral primitives. Keep domain API and types inside each feature folder; do not import one panel's UI into another.
+Each panel passes its own `PanelShellConfig` (see
+`src/components/dashboard/panel-config.ts`) to the shared `DashboardShell`.
+Reuse `src/components/shared` for neutral primitives. Keep domain API and
+types inside each feature folder; do not import one panel's UI into another.
 
 ## Static templates vs. real data
 
 Current pages keep the original HTML sample content as typed JSX. When API responses arrive, pass records as props from a server component or a client fetch via the feature API module. Replace inline duplication with the shared components in `features/user/components` rather than copying endpoint logic into every page.
 
 Prototype interactions (modals, dropdowns, tabs, toasts) are handled globally by `src/components/shared/prototype-interactions.tsx` + `dashboard-interactions.tsx`. Do not turn them into a cart/auth/order store.
+
+Panel page headers and status pills can use the shared primitives in
+`src/components/dashboard` (`page-header.tsx`, `status-badge.tsx`) instead of
+repeating markup in several pages of the same panel.

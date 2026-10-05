@@ -8,10 +8,10 @@ type PageHeaderProps = {
 };
 
 /**
- * Reusable page header for the User panel.
- * Most user pages follow the same pattern: breadcrumb + title + description
+ * Reusable page header for all account panels (User, Vendor, Admin).
+ * Most panel pages follow the same pattern: breadcrumb + title + description
  * + trailing action buttons. Using this component avoids duplicating the
- * `page-head` markup across 15 pages.
+ * `page-head` markup across panel pages.
  */
 export default function PageHeader({ title, description, breadcrumb, actions }: PageHeaderProps) {
   return (

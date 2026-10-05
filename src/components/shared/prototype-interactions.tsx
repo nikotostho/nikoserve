@@ -290,6 +290,52 @@ export default function PrototypeInteractions() {
         toast(`Copied: ${value}`);
       }
 
+      const printButton = target.closest<HTMLElement>("[data-print]");
+      if (printButton) {
+        window.print();
+      }
+
+      // Repeatable form rows (e.g. product variants, service packages):
+      // [data-repeat-add="#rows"] clones the last [data-repeat-row] of the
+      // target container; [data-repeat-remove] deletes its own row.
+      const repeatAdd = target.closest<HTMLElement>("[data-repeat-add]");
+      if (repeatAdd) {
+        const selector = repeatAdd.getAttribute("data-repeat-add");
+        const container = selector ? document.querySelector<HTMLElement>(selector) : null;
+        const rows = container?.querySelectorAll<HTMLElement>(":scope > [data-repeat-row]");
+        const last = rows && rows.length ? rows[rows.length - 1] : null;
+        if (container && last) {
+          const clone = last.cloneNode(true) as HTMLElement;
+          clone.querySelectorAll<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>("input, textarea, select").forEach((field) => {
+            if (field instanceof HTMLInputElement && (field.type === "checkbox" || field.type === "radio")) {
+              field.checked = false;
+            } else if (!(field instanceof HTMLInputElement && ["button", "submit", "hidden"].includes(field.type))) {
+              field.value = "";
+            }
+          });
+          container.append(clone);
+        }
+      }
+
+      const repeatRemove = target.closest<HTMLElement>("[data-repeat-remove]");
+      if (repeatRemove) {
+        const row = repeatRemove.closest<HTMLElement>("[data-repeat-row]");
+        const container = row?.parentElement;
+        if (row && container) {
+          if (container.querySelectorAll(":scope > [data-repeat-row]").length > 1) {
+            row.remove();
+          } else {
+            row.querySelectorAll<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>("input, textarea, select").forEach((field) => {
+              if (field instanceof HTMLInputElement && (field.type === "checkbox" || field.type === "radio")) {
+                field.checked = false;
+              } else if (!(field instanceof HTMLInputElement && ["button", "submit", "hidden"].includes(field.type))) {
+                field.value = "";
+              }
+            });
+          }
+        }
+      }
+
       const toggle = target.closest<HTMLElement>("[data-toggle-class]");
       if (toggle) {
         const className = toggle.getAttribute("data-toggle-class") || "is-on";
@@ -385,7 +431,32 @@ export default function PrototypeInteractions() {
 
     const onChange = (event: Event) => {
       const target = event.target;
-      if (!(target instanceof HTMLInputElement) || !target.hasAttribute("data-check-all")) return;
+      if (!(target instanceof HTMLInputElement)) return;
+
+      // Table row selection: show/update the bulk-action bar with the live
+      // count of selected rows (used by panel list pages).
+      if (target.hasAttribute("data-row-check")) {
+        const card = target.closest<HTMLElement>(".card");
+        const checkedCount = (card ?? (document.body as HTMLElement)).querySelectorAll<HTMLInputElement>(
+          "[data-row-check]:checked",
+        ).length;
+        const bulkBar =
+          card?.querySelector<HTMLElement>(".bulkbar") ??
+          (card?.previousElementSibling instanceof HTMLElement && card.previousElementSibling.classList.contains("bulkbar")
+            ? card.previousElementSibling
+            : null) ??
+          document.querySelector<HTMLElement>(".bulkbar");
+        bulkBar?.querySelectorAll<HTMLElement>("[data-sel-count]").forEach((out) => {
+          out.textContent = String(checkedCount);
+        });
+        card?.querySelectorAll<HTMLElement>("[data-sel-count]").forEach((out) => {
+          out.textContent = String(checkedCount);
+        });
+        bulkBar?.classList.toggle("is-on", checkedCount > 0);
+        return;
+      }
+
+      if (!target.hasAttribute("data-check-all")) return;
       const scope = target.closest("table") ?? document;
       scope.querySelectorAll<HTMLInputElement>("[data-check-row]").forEach((checkbox) => {
         checkbox.checked = target.checked;
@@ -507,6 +578,45 @@ export default function PrototypeInteractions() {
       };
       tick();
       intervals.push(window.setInterval(tick, 1_000));
+    });
+
+    // Progress rings: <div data-ring="86" data-ring-color="#00b894"></div>
+    // renders a circular percentage gauge (verification progress, profile
+    // completion, …) used by panel pages.
+    document.querySelectorAll<HTMLElement>("[data-ring]").forEach((ring) => {
+      if (ring.dataset.ringRendered === "true") return;
+      ring.dataset.ringRendered = "true";
+      const percent = Math.min(100, Math.max(0, Number(ring.getAttribute("data-ring")) || 0));
+      const color = ring.getAttribute("data-ring-color") || "#ff2525";
+      const radius = 34;
+      const circumference = 2 * Math.PI * radius;
+      const svg = document.createElementNS(HTML_NS, "svg");
+      svg.setAttribute("viewBox", "0 0 80 80");
+      svg.setAttribute("class", "w-full h-full -rotate-90");
+      const track = document.createElementNS(HTML_NS, "circle");
+      track.setAttribute("cx", "40");
+      track.setAttribute("cy", "40");
+      track.setAttribute("r", String(radius));
+      track.setAttribute("fill", "none");
+      track.setAttribute("stroke", "#eceef2");
+      track.setAttribute("stroke-width", "8");
+      const bar = document.createElementNS(HTML_NS, "circle");
+      bar.setAttribute("cx", "40");
+      bar.setAttribute("cy", "40");
+      bar.setAttribute("r", String(radius));
+      bar.setAttribute("fill", "none");
+      bar.setAttribute("stroke", color);
+      bar.setAttribute("stroke-width", "8");
+      bar.setAttribute("stroke-linecap", "round");
+      bar.setAttribute("stroke-dasharray", `${circumference} ${circumference}`);
+      bar.setAttribute("stroke-dashoffset", String(circumference * (1 - percent / 100)));
+      svg.append(track, bar);
+      const label = document.createElement("span");
+      label.textContent = `${percent}%`;
+      label.style.cssText =
+        "position:absolute;inset:0;display:grid;place-items:center;font-size:15px;font-weight:800;";
+      ring.style.position = "relative";
+      ring.append(svg, label);
     });
 
     document.querySelectorAll<HTMLElement>("[data-gallery]").forEach((gallery) => {
