@@ -4,6 +4,7 @@ import "./globals.css";
 import "@/styles/fonts.css";
 import "@/styles/style.css";
 import "@/styles/components.css";
+import "@/styles/dashboard.css";
 import PrototypeInteractions from "@/components/shared/prototype-interactions";
 
 export const metadata: Metadata = {

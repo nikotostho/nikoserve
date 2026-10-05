@@ -1,0 +1,84 @@
+export default function MessagesPage() {
+  return (
+    <>
+      <div className="page-head"><div><nav className="crumb mb-1.5"><a href="/user/dashboard">My Account</a><svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="m9 6 6 6-6 6"/></svg><span className="is-current">Account</span><svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="m9 6 6 6-6 6"/></svg><span className="is-current">Messages</span></nav>
+      <h1>Messages</h1><p>Chat with sellers, service providers and HaatBazar support.</p></div>
+      <div className="flex flex-wrap items-center gap-2"><button className="btn btn-sm btn-outline"><svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="3.2"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M5 5l2 2M17 17l2 2M19 5l-2 2M7 17l-2 2"/></svg>Chat settings</button><button className="btn btn-sm btn-primary"><svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M12 5v14M5 12h14"/></svg>New message</button></div></div>
+      <div className="card overflow-hidden"><div className="chat-wrap">
+      <div className="chat-list">
+      <div className="p-3 border-b border-[#e7e9ef]"><div className="input-group"><svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg><input className="input input-sm !min-h-[38px]" placeholder="Search conversations" /></div>
+      <div className="flex gap-1.5 mt-2 overflow-x-auto no-scrollbar" data-chip-group><button className="chip !h-7 !text-[12px] is-active">All</button><button className="chip !h-7 !text-[12px] ">Unread</button><button className="chip !h-7 !text-[12px] ">Sellers</button><button className="chip !h-7 !text-[12px] ">Providers</button><button className="chip !h-7 !text-[12px] ">Support</button></div></div>
+      <div className="chat-item is-active">
+      <span className="avatar avatar-md bg-brand-500">R</span>
+      <div className="min-w-0 flex-1"><div className="flex items-center gap-1.5"><p className="text-[13px] font-extrabold clamp-1">Rahim Electronics</p><span className="text-[10.5px] text-ink-400 ml-auto shrink-0">2m</span></div>
+      <p className="text-[11px] text-ink-400 mb-0.5">Seller</p>
+      <div className="flex items-center gap-2"><p className="text-[12px] text-ink-500 clamp-1 flex-1">Yes, official 1-year warranty is included with the phone.</p><span className="badge badge-solid !px-1.5 !py-0 shrink-0">2</span></div></div></div><div className="chat-item ">
+      <span className="avatar avatar-md bg-service-600">K</span>
+      <div className="min-w-0 flex-1"><div className="flex items-center gap-1.5"><p className="text-[13px] font-extrabold clamp-1">Kamal AC Servicing</p><span className="text-[10.5px] text-ink-400 ml-auto shrink-0">1h</span></div>
+      <p className="text-[11px] text-ink-400 mb-0.5">Provider</p>
+      <div className="flex items-center gap-2"><p className="text-[12px] text-ink-500 clamp-1 flex-1">We will arrive between 10 and 10:30 AM tomorrow.</p></div></div></div><div className="chat-item ">
+      <span className="avatar avatar-md bg-ink-700">H</span>
+      <div className="min-w-0 flex-1"><div className="flex items-center gap-1.5"><p className="text-[13px] font-extrabold clamp-1">HaatBazar Support</p><span className="text-[10.5px] text-ink-400 ml-auto shrink-0">3h</span></div>
+      <p className="text-[11px] text-ink-400 mb-0.5">Support</p>
+      <div className="flex items-center gap-2"><p className="text-[12px] text-ink-500 clamp-1 flex-1">Your ticket TKT-9921 has been updated by our team.</p><span className="badge badge-solid !px-1.5 !py-0 shrink-0">1</span></div></div></div><div className="chat-item ">
+      <span className="avatar avatar-md bg-brand-500">A</span>
+      <div className="min-w-0 flex-1"><div className="flex items-center gap-1.5"><p className="text-[13px] font-extrabold clamp-1">Aarong Style</p><span className="text-[10.5px] text-ink-400 ml-auto shrink-0">Yesterday</span></div>
+      <p className="text-[11px] text-ink-400 mb-0.5">Seller</p>
+      <div className="flex items-center gap-2"><p className="text-[12px] text-ink-500 clamp-1 flex-1">The L size is available in navy blue and maroon.</p></div></div></div><div className="chat-item ">
+      <span className="avatar avatar-md bg-service-600">N</span>
+      <div className="min-w-0 flex-1"><div className="flex items-center gap-1.5"><p className="text-[13px] font-extrabold clamp-1">Nirapod Home Cleaning</p><span className="text-[10.5px] text-ink-400 ml-auto shrink-0">2d</span></div>
+      <p className="text-[11px] text-ink-400 mb-0.5">Provider</p>
+      <div className="flex items-center gap-2"><p className="text-[12px] text-ink-500 clamp-1 flex-1">Thank you for choosing us! Quote attached.</p></div></div></div><div className="chat-item ">
+      <span className="avatar avatar-md bg-ink-700">G</span>
+      <div className="min-w-0 flex-1"><div className="flex items-center gap-1.5"><p className="text-[13px] font-extrabold clamp-1">Gadget Hub BD</p><span className="text-[10.5px] text-ink-400 ml-auto shrink-0">5d</span></div>
+      <p className="text-[11px] text-ink-400 mb-0.5">Seller</p>
+      <div className="flex items-center gap-2"><p className="text-[12px] text-ink-500 clamp-1 flex-1">Your refund has been processed from our side.</p></div></div></div><div className="chat-item ">
+      <span className="avatar avatar-md bg-brand-500">G</span>
+      <div className="min-w-0 flex-1"><div className="flex items-center gap-1.5"><p className="text-[13px] font-extrabold clamp-1">Glamour Beauty Parlour</p><span className="text-[10.5px] text-ink-400 ml-auto shrink-0">1w</span></div>
+      <p className="text-[11px] text-ink-400 mb-0.5">Provider</p>
+      <div className="flex items-center gap-2"><p className="text-[12px] text-ink-500 clamp-1 flex-1">Would you like to book the bridal package?</p></div></div></div></div>
+      
+      <div className="chat-body">
+      <div className="flex items-center gap-3 px-4 py-3 border-b border-[#e7e9ef]">
+      <span className="avatar avatar-md bg-brand-500">R</span>
+      <div className="min-w-0"><p className="text-[13.5px] font-extrabold">Rahim Electronics <svg className="w-3.5 h-3.5 inline text-service-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M12 3l7 3v6c0 4.5-3 7.6-7 9-4-1.4-7-4.5-7-9V6z"/><path d="m9 12 2 2 4-4"/></svg></p>
+      <p className="text-[11.5px] text-green-600 font-semibold"><svg className="w-3 h-3 inline" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M20 6 9 17l-5-5"/></svg> Online · usually replies within 1 hour</p></div>
+      <div className="ml-auto flex gap-1.5"><button className="icon-btn"><svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M5 3h3l2 5-2 1a11 11 0 0 0 5 5l1-2 5 2v3a2 2 0 0 1-2 2A16 16 0 0 1 3 5a2 2 0 0 1 2-2z"/></svg></button><button className="icon-btn"><svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 11v5M12 8h.01"/></svg></button><div data-dropdown className="inline-block"><button data-dropdown-toggle className="btn btn-xs btn-outline"><svg className="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M8 6h13M8 12h13M8 18h13M3.5 6h.01M3.5 12h.01M3.5 18h.01"/></svg></button>
+      <div data-dropdown-menu className="right-0 !min-w-[180px]"><a className="dd-item " ><svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M4 8h16v12H4z"/><path d="M9 8V4h6v4"/></svg>View shop</a><a className="dd-item " ><svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M6 9a6 6 0 1 1 12 0c0 5 2 6 2 6H4s2-1 2-6"/><path d="M10 19a2 2 0 0 0 4 0"/></svg>Mute conversation</a><a className="dd-item " ><svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M5 21V4h9l-1 3h7l-2 6 2 6H5"/></svg>Report seller</a><a className="dd-item is-danger" ><svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M4 7h16M9 7V4h6v3M6 7l1 14h10l1-14"/></svg>Delete chat</a></div></div></div></div>
+      
+      <div className="chat-scroll thin-scroll">
+      <p className="text-center text-[11px] text-ink-400 mb-4">Today, 10:14 AM</p>
+      <div className="mb-3 max-w-[74%]"><div className="p-2.5 rounded-xl bg-white border border-[#e7e9ef] mb-2 flex gap-2.5"><span className="ph ph-a w-11 h-11 rounded-lg"><svg className="" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.3" strokeLinecap="round" strokeLinejoin="round"><rect x="7" y="2" width="10" height="20" rx="2.5"/><path d="M11 19h2"/></svg></span>
+      <div className="min-w-0"><p className="text-[12px] font-bold clamp-1">Realme C100X 6/128GB</p><p className="text-[12px] text-brand-600 font-extrabold">৳11,290</p></div></div>
+      <div className="bubble bubble-in">Hello, does this phone come with an official warranty? And is the green colour in stock?<p className="bubble-time">10:14 AM</p></div></div>
+      <div className="mb-3"><div className="bubble bubble-out">Assalamu alaikum! Yes, official 1-year warranty is included with the phone. Green is in stock — we have 12 pieces right now.<p className="bubble-time !text-white/70">10:16 AM</p></div></div>
+      <div className="mb-3 max-w-[74%]"><div className="bubble bubble-in">Great. Can you deliver to Banani by tomorrow? And do you give a free tempered glass?<p className="bubble-time">10:18 AM</p></div></div>
+      <div className="mb-3"><div className="bubble bubble-out">Yes, next-day delivery is available for Dhaka city. We will include a free tempered glass and a soft case with your order.<p className="bubble-time !text-white/70">10:21 AM</p></div></div>
+      <div className="mb-3 max-w-[74%]"><div className="bubble bubble-in">Perfect, I have placed the order. Order number HB-884213.<p className="bubble-time">10:26 AM</p></div></div>
+      <div className="mb-3"><div className="bubble bubble-out">Received, thank you! We are packing it now and it will be handed over to Pathao today. You will get the tracking number by SMS.<p className="bubble-time !text-white/70">10:31 AM</p></div></div>
+      <div className="flex items-center gap-2 text-[12px] text-ink-400"><span className="avatar avatar-sm bg-brand-500">R</span>typing<span className="animate-pulse-soft">•••</span></div></div>
+      
+      <div className="p-3 border-t border-[#e7e9ef]">
+      <div className="flex flex-wrap gap-1.5 mb-2"><button className="chip !h-7 !text-[12px]">Is this in stock?</button><button className="chip !h-7 !text-[12px]">What is the delivery time?</button><button className="chip !h-7 !text-[12px]">Can you offer a discount?</button><button className="chip !h-7 !text-[12px]">Warranty details?</button></div>
+      <div className="flex items-end gap-2"><button className="icon-btn"><svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M12 5v14M5 12h14"/></svg></button><button className="icon-btn"><svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M4 8h3l2-2h6l2 2h3v12H4z"/><circle cx="12" cy="14" r="3.2"/></svg></button>
+      <textarea className="textarea !min-h-[42px] !py-2.5 flex-1" placeholder="Write a message…"></textarea>
+      <button className="btn btn-primary btn-icon" data-toast="Message sent"><svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="m9 6 6 6-6 6"/></svg></button></div>
+      <p className="text-[11px] text-ink-400 mt-1.5"><svg className="w-3 h-3 inline" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M12 3l7 3v6c0 4.5-3 7.6-7 9-4-1.4-7-4.5-7-9V6z"/><path d="m9 12 2 2 4-4"/></svg> Never share OTP or payment details in chat. All payments must go through HaatBazar.</p></div></div>
+      
+      <aside className="hidden 2xl:block border-l border-[#e7e9ef] p-4 overflow-y-auto">
+      <p className="text-[11px] font-extrabold uppercase tracking-wider text-ink-400 mb-3">Seller details</p>
+      <div className="text-center mb-4"><span className="ph ph-c w-16 h-16 rounded-2xl mx-auto mb-2"><svg className="" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.3" strokeLinecap="round" strokeLinejoin="round"><path d="M4 8h16v12H4z"/><path d="M9 8V4h6v4"/></svg></span>
+      <p className="text-[13.5px] font-extrabold">Rahim Electronics</p><p className="text-[12px] text-ink-500">Mirpur, Dhaka</p>
+      <div className="flex justify-center items-center gap-1.5 mt-1"><span className="stars "><svg viewBox="0 0 24 24" ><path d="m12 2 2.9 6.3 6.8.7-5 4.6 1.4 6.7L12 17l-6.1 3.3L7.3 13.6l-5-4.6 6.8-.7z"/></svg><svg viewBox="0 0 24 24" ><path d="m12 2 2.9 6.3 6.8.7-5 4.6 1.4 6.7L12 17l-6.1 3.3L7.3 13.6l-5-4.6 6.8-.7z"/></svg><svg viewBox="0 0 24 24" ><path d="m12 2 2.9 6.3 6.8.7-5 4.6 1.4 6.7L12 17l-6.1 3.3L7.3 13.6l-5-4.6 6.8-.7z"/></svg><svg viewBox="0 0 24 24" ><path d="m12 2 2.9 6.3 6.8.7-5 4.6 1.4 6.7L12 17l-6.1 3.3L7.3 13.6l-5-4.6 6.8-.7z"/></svg><svg viewBox="0 0 24 24" ><path d="m12 2 2.9 6.3 6.8.7-5 4.6 1.4 6.7L12 17l-6.1 3.3L7.3 13.6l-5-4.6 6.8-.7z"/></svg></span><span className="text-[11.5px] text-ink-400">4.8</span></div></div>
+      <div className="grid grid-cols-2 gap-2 mb-4"><div className="p-2.5 rounded-lg bg-ink-50 text-center"><p className="text-[13px] font-extrabold">2,340</p><p className="text-[10.5px] text-ink-500">Reviews</p></div><div className="p-2.5 rounded-lg bg-ink-50 text-center"><p className="text-[13px] font-extrabold">98%</p><p className="text-[10.5px] text-ink-500">On time</p></div><div className="p-2.5 rounded-lg bg-ink-50 text-center"><p className="text-[13px] font-extrabold">1hr</p><p className="text-[10.5px] text-ink-500">Response</p></div><div className="p-2.5 rounded-lg bg-ink-50 text-center"><p className="text-[13px] font-extrabold">4 yrs</p><p className="text-[10.5px] text-ink-500">On HaatBazar</p></div></div>
+      <a href="/shop-profile" className="btn btn-sm btn-outline btn-block mb-4">Visit store</a>
+      <p className="text-[11px] font-extrabold uppercase tracking-wider text-ink-400 mb-2">Shared items</p>
+      <div className="space-y-2"><a href="/product-details" className="flex gap-2.5 p-2 rounded-lg hover:bg-ink-50"><span className="ph ph-a w-10 h-10 rounded-lg"><svg className="" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.3" strokeLinecap="round" strokeLinejoin="round"><rect x="7" y="2" width="10" height="20" rx="2.5"/><path d="M11 19h2"/></svg></span>
+      <div className="min-w-0"><p className="text-[12px] font-bold clamp-1">Realme C100X 6/128GB</p><p className="text-[12px] text-brand-600 font-extrabold">৳11,290</p></div></a><a href="/product-details" className="flex gap-2.5 p-2 rounded-lg hover:bg-ink-50"><span className="ph ph-b w-10 h-10 rounded-lg"><svg className="" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.3" strokeLinecap="round" strokeLinejoin="round"><path d="m12 3 8 4.5v9L12 21l-8-4.5v-9z"/><path d="m4 7.5 8 4.5 8-4.5M12 12v9"/></svg></span>
+      <div className="min-w-0"><p className="text-[12px] font-bold clamp-1">Tempered Glass</p><p className="text-[12px] text-brand-600 font-extrabold">৳200</p></div></a></div>
+      <p className="text-[11px] font-extrabold uppercase tracking-wider text-ink-400 mt-4 mb-2">Related orders</p>
+      <a href="/user/orders/HB-884213" className="block p-3 rounded-xl border border-[#e7e9ef] hover:border-brand-200"><p className="text-[12.5px] font-bold">HB-884213</p><p className="text-[11.5px] text-ink-400">2 items · ৳11,290 · Shipped</p></a>
+      </aside></div></div>
+    </>
+  );
+}

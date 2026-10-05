@@ -150,5 +150,65 @@
   {
     "source": "/404.html",
     "destination": "/404"
+  },
+  {
+    "source": "/user/dashboard.html",
+    "destination": "/user/dashboard"
+  },
+  {
+    "source": "/user/orders.html",
+    "destination": "/user/orders"
+  },
+  {
+    "source": "/user/order-details.html",
+    "destination": "/user/orders/HB-884213"
+  },
+  {
+    "source": "/user/returns.html",
+    "destination": "/user/returns"
+  },
+  {
+    "source": "/user/bookings.html",
+    "destination": "/user/bookings"
+  },
+  {
+    "source": "/user/wishlist.html",
+    "destination": "/user/wishlist"
+  },
+  {
+    "source": "/user/reviews.html",
+    "destination": "/user/reviews"
+  },
+  {
+    "source": "/user/wallet.html",
+    "destination": "/user/wallet"
+  },
+  {
+    "source": "/user/vouchers.html",
+    "destination": "/user/vouchers"
+  },
+  {
+    "source": "/user/addresses.html",
+    "destination": "/user/addresses"
+  },
+  {
+    "source": "/user/profile.html",
+    "destination": "/user/profile"
+  },
+  {
+    "source": "/user/notifications.html",
+    "destination": "/user/notifications"
+  },
+  {
+    "source": "/user/messages.html",
+    "destination": "/user/messages"
+  },
+  {
+    "source": "/user/support.html",
+    "destination": "/user/support"
+  },
+  {
+    "source": "/user/settings.html",
+    "destination": "/user/settings"
   }
 ]

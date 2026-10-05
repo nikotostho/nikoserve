@@ -1,6 +1,6 @@
 # Frontend architecture and extension guide
 
-This document is the project map for future implementation work. The current repository is the public storefront slice only; it does not contain a NestJS service, protected dashboards, or persisted business data.
+This document is the project map for future implementation work. The repository now contains the public storefront plus the migrated Customer (User) dashboard. It does not yet contain a NestJS service, persisted business data, or the Vendor/Admin panels.
 
 ## Current route groups
 
@@ -10,6 +10,9 @@ Next.js App Router file paths are the source of truth. Route groups in parenthes
 | --- | --- | --- |
 | `src/app/(storefront)` | `/`, `/products`, `/product-details`, `/services`, `/shops`, `/cart`, `/checkout`, `/about`, `/terms` | Shared public navigation/footer plus public marketplace and content pages. |
 | `src/app/(auth)` | `/login`, `/register`, `/otp-verify`, `/forgot-password`, `/reset-password` | Standalone account-entry and recovery layouts. Authentication is not connected yet. |
+| `src/app/(panels)/user` | `/user/dashboard`, `/user/orders`, `/user/orders/[orderId]`, `/user/wallet`, `/user/wishlist` (15 pages) | Customer dashboard shell (sidebar + topbar) and account pages. |
+| `src/app/(panels)/vendor` | `/vendor` (placeholder) | Future seller/provider shell — reuse `src/components/dashboard` pattern. |
+| `src/app/(panels)/admin` | `/admin` (placeholder) | Future staff shell — reuse `src/components/dashboard` pattern. |
 | `src/app/not-found.tsx` | unmatched URL | Shared storefront-styled 404 response. |
 
 The other public routes (categories, offers, search, product/service details, policies, help, onboarding, etc.) follow the same split: a small `app` route file and a feature-owned page component.
@@ -22,11 +25,16 @@ src/
     layout.tsx                    # root metadata, global styles and client behavior mount
     (storefront)/                 # public site layout and URL routes
     (auth)/                       # sign-in/register/recovery URLs and layout
+    (panels)/
+      user/                       # /user/* customer shell + 15 migrated pages
+      vendor/                     # /vendor/* placeholder shell
+      admin/                      # /admin/* placeholder shell
     not-found.tsx
   components/
     shared/                       # cross-route client behavior for the current static templates
     catalog/                       # reusable product-card actions
     storefront/                   # announcement bar, header, footer, mobile nav, dialogs
+    dashboard/                    # shared shell for User/Vendor/Admin (sidebar, topbar, interactions)
   features/
     home/pages/                    # homepage
     catalog/pages/                 # categories, listings, search, product detail, offers, brands
@@ -36,30 +44,44 @@ src/
     content/pages/                 # editorial, support, policy, sitemap, not-found
     onboarding/pages/              # seller/provider landing and application forms
     auth/pages/                    # account-entry and recovery screens
+    user/                          # customer dashboard domain
+      pages/                       # 15 migrated pages (dashboard, orders, bookings, wallet …)
+      components/                  # user-specific reusable UI (PageHeader, StatusBadge …)
+      types/user.ts                # DTO placeholders — replace with OpenAPI output
+      api/user-api.ts              # apiRequest wrappers
+      lib/constants.ts
+    vendor/                        # future seller/provider domain (placeholder)
+    admin/                         # future platform ops domain (placeholder)
   lib/
     api/                           # shared HTTP client and normalized API error
     page-metadata.ts
     legacy-redirects.json
-  styles/                          # migrated design-system CSS
+  styles/
+    style.css
+    components.css
+    fonts.css
+    dashboard.css                  # shell, stat cards, status pills, chat, calendar
 ```
 
 Page files under `features/*/pages` preserve the existing static sample content. Keep route entrypoints thin: they should set route metadata and render the owning feature page, not duplicate the global header or footer. Put a new public feature in its domain folder; put its URL in the appropriate route group.
 
-## Adding User, Vendor, and Admin panels later
+## Panel architecture (User done, Vendor/Admin next)
 
-Do not add these panels to the public storefront layout. Add role-specific route groups while keeping the URL prefixes explicit:
+Do not add dashboards to the public storefront layout. Each panel keeps an explicit URL prefix and its own layout/navigation:
 
 ```text
-src/app/(panels)/user/layout.tsx       # /user/* account shell and session check
-src/app/(panels)/vendor/layout.tsx     # /vendor/* seller/provider shell and role check
-src/app/(panels)/admin/layout.tsx      # /admin/* staff shell and permission check
+src/app/(panels)/user/layout.tsx       # /user/* customer shell and session check (done)
+src/app/(panels)/vendor/layout.tsx     # /vendor/* seller/provider shell and role check (placeholder)
+src/app/(panels)/admin/layout.tsx      # /admin/* staff shell and permission check (placeholder)
 
-src/features/user/                    # customer account, orders, addresses, bookings, etc.
-src/features/vendor/                  # seller/provider operations and business profile
-src/features/admin/                   # platform operations and moderation
+src/features/user/                    # customer account, orders, addresses, bookings, etc. (15 pages migrated)
+src/features/vendor/                  # seller/provider operations and business profile (next)
+src/features/admin/                   # platform operations and moderation (next)
 ```
 
-Each panel gets its own layout/navigation and feature-owned pages. Reuse neutral primitives from `components/shared` where appropriate, but do not make the storefront header responsible for dashboard permissions or panel state. Shared business concepts should be exposed through feature/domain APIs rather than imported from another panel's UI.
+The User panel is complete and demonstrates the pattern to follow for Vendor/Admin. Each panel gets its own layout/navigation and feature-owned pages. Reuse the shared `src/components/dashboard` shell and neutral primitives from `src/components/shared` where appropriate, but do not make the storefront header responsible for dashboard permissions or panel state. Shared business concepts should be exposed through feature/domain APIs rather than imported from another panel's UI.
+
+Detailed map for the User panel lives in `src/features/user/README.md`.
 
 The NestJS API is the authority for identity, role membership, record ownership, and permissions. Route/layout checks improve navigation and user experience; every protected NestJS endpoint must independently enforce authorization. Never rely on hidden links or client-side role checks as access control.
 
