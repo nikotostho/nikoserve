@@ -1,3 +1,4 @@
+import { Fragment } from "react";
 import Link from "next/link";
 import type { PanelShellConfig } from "./panel-config";
 
@@ -34,9 +35,16 @@ export default function DashboardTopbar({ config }: Readonly<{ config: PanelShel
       <div className="ml-auto flex items-center gap-1.5">
         {topbar.primaryAction ? (
           <Link href={topbar.primaryAction.href} className={`btn btn-sm ${topbar.primaryAction.variant === "primary" ? "btn-primary" : "btn-outline"} hidden md:inline-flex`}>
-            {topbar.primaryAction.icon}
+            <Fragment key="icon">{topbar.primaryAction.icon}</Fragment>
             {topbar.primaryAction.label}
           </Link>
+        ) : null}
+
+        {topbar.statusBadge ? (
+          <span className="badge badge-green hidden md:inline-flex">
+            <Fragment key="icon">{topbar.statusBadge.icon}</Fragment>
+            {topbar.statusBadge.label}
+          </span>
         ) : null}
 
         {topbar.notificationsHref ? (
@@ -46,7 +54,9 @@ export default function DashboardTopbar({ config }: Readonly<{ config: PanelShel
                 <path d="M6 9a6 6 0 1 1 12 0c0 5 2 6 2 6H4s2-1 2-6" />
                 <path d="M10 19a2 2 0 0 0 4 0" />
               </svg>
-              {topbar.notificationCount ? <span className="dot">{topbar.notificationCount}</span> : null}
+              {topbar.notificationCount ? (
+                <span className="dot" key="dot">{topbar.notificationCount}</span>
+              ) : null}
             </button>
             <div data-dropdown-menu className="right-0 !min-w-[320px] !p-0">
               <div className="flex items-center justify-between px-3.5 py-2.5 border-b border-[#f0f1f5]">
@@ -107,7 +117,9 @@ export default function DashboardTopbar({ config }: Readonly<{ config: PanelShel
                 <path d="M21 12a8 8 0 1 1-3.2-6.4" />
                 <path d="M8 12h8M8 9h5" />
               </svg>
-              {topbar.messageCount ? <span className="dot">{topbar.messageCount}</span> : null}
+              {topbar.messageCount ? (
+                <span className="dot" key="dot">{topbar.messageCount}</span>
+              ) : null}
             </button>
             <div data-dropdown-menu className="right-0 !min-w-[300px]">
               <div className="dd-label">Recent messages</div>
@@ -157,7 +169,7 @@ export default function DashboardTopbar({ config }: Readonly<{ config: PanelShel
               <span key={`${item.href}-${item.label}`}>
                 {item.separatorAbove ? <div className="dd-sep"></div> : null}
                 <Link href={item.href} className={`dd-item${item.danger ? " is-danger" : ""}`}>
-                  {item.icon}
+                  <Fragment key="icon">{item.icon}</Fragment>
                   {item.label}
                 </Link>
               </span>

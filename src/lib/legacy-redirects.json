@@ -334,5 +334,217 @@
   {
     "source": "/vendor/order-details.html",
     "destination": "/vendor/orders/HB-884213"
+  },
+  {
+    "source": "/admin/abandoned-carts.html",
+    "destination": "/admin/abandoned-carts"
+  },
+  {
+    "source": "/admin/activity.html",
+    "destination": "/admin/activity"
+  },
+  {
+    "source": "/admin/ads.html",
+    "destination": "/admin/ads"
+  },
+  {
+    "source": "/admin/analytics.html",
+    "destination": "/admin/analytics"
+  },
+  {
+    "source": "/admin/attributes.html",
+    "destination": "/admin/attributes"
+  },
+  {
+    "source": "/admin/blog.html",
+    "destination": "/admin/blog"
+  },
+  {
+    "source": "/admin/bookings.html",
+    "destination": "/admin/bookings"
+  },
+  {
+    "source": "/admin/brands.html",
+    "destination": "/admin/brands"
+  },
+  {
+    "source": "/admin/campaigns.html",
+    "destination": "/admin/campaigns"
+  },
+  {
+    "source": "/admin/categories.html",
+    "destination": "/admin/categories"
+  },
+  {
+    "source": "/admin/chats.html",
+    "destination": "/admin/chats"
+  },
+  {
+    "source": "/admin/cms.html",
+    "destination": "/admin/cms"
+  },
+  {
+    "source": "/admin/commissions.html",
+    "destination": "/admin/commissions"
+  },
+  {
+    "source": "/admin/customers.html",
+    "destination": "/admin/customers"
+  },
+  {
+    "source": "/admin/dashboard.html",
+    "destination": "/admin/dashboard"
+  },
+  {
+    "source": "/admin/disputes.html",
+    "destination": "/admin/disputes"
+  },
+  {
+    "source": "/admin/email-templates.html",
+    "destination": "/admin/email-templates"
+  },
+  {
+    "source": "/admin/faq.html",
+    "destination": "/admin/faq"
+  },
+  {
+    "source": "/admin/gift-cards.html",
+    "destination": "/admin/gift-cards"
+  },
+  {
+    "source": "/admin/integrations.html",
+    "destination": "/admin/integrations"
+  },
+  {
+    "source": "/admin/inventory.html",
+    "destination": "/admin/inventory"
+  },
+  {
+    "source": "/admin/invoices.html",
+    "destination": "/admin/invoices"
+  },
+  {
+    "source": "/admin/kyc.html",
+    "destination": "/admin/kyc"
+  },
+  {
+    "source": "/admin/leads.html",
+    "destination": "/admin/leads"
+  },
+  {
+    "source": "/admin/locations.html",
+    "destination": "/admin/locations"
+  },
+  {
+    "source": "/admin/logs.html",
+    "destination": "/admin/logs"
+  },
+  {
+    "source": "/admin/media.html",
+    "destination": "/admin/media"
+  },
+  {
+    "source": "/admin/moderation.html",
+    "destination": "/admin/moderation"
+  },
+  {
+    "source": "/admin/notifications.html",
+    "destination": "/admin/notifications"
+  },
+  {
+    "source": "/admin/orders.html",
+    "destination": "/admin/orders"
+  },
+  {
+    "source": "/admin/pages.html",
+    "destination": "/admin/pages"
+  },
+  {
+    "source": "/admin/payment-methods.html",
+    "destination": "/admin/payment-methods"
+  },
+  {
+    "source": "/admin/payouts.html",
+    "destination": "/admin/payouts"
+  },
+  {
+    "source": "/admin/product-approvals.html",
+    "destination": "/admin/product-approvals"
+  },
+  {
+    "source": "/admin/products.html",
+    "destination": "/admin/products"
+  },
+  {
+    "source": "/admin/promotions.html",
+    "destination": "/admin/promotions"
+  },
+  {
+    "source": "/admin/questions.html",
+    "destination": "/admin/questions"
+  },
+  {
+    "source": "/admin/reports.html",
+    "destination": "/admin/reports"
+  },
+  {
+    "source": "/admin/reviews.html",
+    "destination": "/admin/reviews"
+  },
+  {
+    "source": "/admin/roles.html",
+    "destination": "/admin/roles"
+  },
+  {
+    "source": "/admin/seo.html",
+    "destination": "/admin/seo"
+  },
+  {
+    "source": "/admin/service-approvals.html",
+    "destination": "/admin/service-approvals"
+  },
+  {
+    "source": "/admin/service-categories.html",
+    "destination": "/admin/service-categories"
+  },
+  {
+    "source": "/admin/services.html",
+    "destination": "/admin/services"
+  },
+  {
+    "source": "/admin/settings.html",
+    "destination": "/admin/settings"
+  },
+  {
+    "source": "/admin/shipping.html",
+    "destination": "/admin/shipping"
+  },
+  {
+    "source": "/admin/staff.html",
+    "destination": "/admin/staff"
+  },
+  {
+    "source": "/admin/system-health.html",
+    "destination": "/admin/system-health"
+  },
+  {
+    "source": "/admin/taxes.html",
+    "destination": "/admin/taxes"
+  },
+  {
+    "source": "/admin/tickets.html",
+    "destination": "/admin/tickets"
+  },
+  {
+    "source": "/admin/transactions.html",
+    "destination": "/admin/transactions"
+  },
+  {
+    "source": "/admin/vendor-approvals.html",
+    "destination": "/admin/vendor-approvals"
+  },
+  {
+    "source": "/admin/vendors.html",
+    "destination": "/admin/vendors"
   }
 ]
