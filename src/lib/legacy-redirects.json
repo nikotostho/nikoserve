@@ -210,5 +210,129 @@
   {
     "source": "/user/settings.html",
     "destination": "/user/settings"
+  },
+  {
+    "source": "/vendor/academy.html",
+    "destination": "/vendor/academy"
+  },
+  {
+    "source": "/vendor/add-product.html",
+    "destination": "/vendor/add-product"
+  },
+  {
+    "source": "/vendor/add-service.html",
+    "destination": "/vendor/add-service"
+  },
+  {
+    "source": "/vendor/ads.html",
+    "destination": "/vendor/ads"
+  },
+  {
+    "source": "/vendor/analytics.html",
+    "destination": "/vendor/analytics"
+  },
+  {
+    "source": "/vendor/bookings.html",
+    "destination": "/vendor/bookings"
+  },
+  {
+    "source": "/vendor/business-profile.html",
+    "destination": "/vendor/business-profile"
+  },
+  {
+    "source": "/vendor/customers.html",
+    "destination": "/vendor/customers"
+  },
+  {
+    "source": "/vendor/dashboard.html",
+    "destination": "/vendor/dashboard"
+  },
+  {
+    "source": "/vendor/documents.html",
+    "destination": "/vendor/documents"
+  },
+  {
+    "source": "/vendor/inventory.html",
+    "destination": "/vendor/inventory"
+  },
+  {
+    "source": "/vendor/invoices.html",
+    "destination": "/vendor/invoices"
+  },
+  {
+    "source": "/vendor/leads.html",
+    "destination": "/vendor/leads"
+  },
+  {
+    "source": "/vendor/messages.html",
+    "destination": "/vendor/messages"
+  },
+  {
+    "source": "/vendor/notifications.html",
+    "destination": "/vendor/notifications"
+  },
+  {
+    "source": "/vendor/orders.html",
+    "destination": "/vendor/orders"
+  },
+  {
+    "source": "/vendor/payouts.html",
+    "destination": "/vendor/payouts"
+  },
+  {
+    "source": "/vendor/products.html",
+    "destination": "/vendor/products"
+  },
+  {
+    "source": "/vendor/promotions.html",
+    "destination": "/vendor/promotions"
+  },
+  {
+    "source": "/vendor/questions.html",
+    "destination": "/vendor/questions"
+  },
+  {
+    "source": "/vendor/reports.html",
+    "destination": "/vendor/reports"
+  },
+  {
+    "source": "/vendor/returns.html",
+    "destination": "/vendor/returns"
+  },
+  {
+    "source": "/vendor/reviews.html",
+    "destination": "/vendor/reviews"
+  },
+  {
+    "source": "/vendor/services.html",
+    "destination": "/vendor/services"
+  },
+  {
+    "source": "/vendor/settings.html",
+    "destination": "/vendor/settings"
+  },
+  {
+    "source": "/vendor/shipping.html",
+    "destination": "/vendor/shipping"
+  },
+  {
+    "source": "/vendor/shop-profile.html",
+    "destination": "/vendor/shop-profile"
+  },
+  {
+    "source": "/vendor/staff.html",
+    "destination": "/vendor/staff"
+  },
+  {
+    "source": "/vendor/subscription.html",
+    "destination": "/vendor/subscription"
+  },
+  {
+    "source": "/vendor/transactions.html",
+    "destination": "/vendor/transactions"
+  },
+  {
+    "source": "/vendor/order-details.html",
+    "destination": "/vendor/orders/HB-884213"
   }
 ]

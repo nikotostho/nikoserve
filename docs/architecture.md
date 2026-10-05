@@ -1,6 +1,6 @@
 # Frontend architecture and extension guide
 
-This document is the project map for future implementation work. The repository now contains the public storefront plus the migrated Customer (User) dashboard. It does not yet contain a NestJS service, persisted business data, or the Vendor/Admin panels.
+This document is the project map for future implementation work. The repository now contains the public storefront plus the migrated Customer (User) and Vendor dashboards. It does not yet contain a NestJS service, persisted business data, or the Admin panel.
 
 ## Current route groups
 
@@ -11,8 +11,8 @@ Next.js App Router file paths are the source of truth. Route groups in parenthes
 | `src/app/(storefront)` | `/`, `/products`, `/product-details`, `/services`, `/shops`, `/cart`, `/checkout`, `/about`, `/terms` | Shared public navigation/footer plus public marketplace and content pages. |
 | `src/app/(auth)` | `/login`, `/register`, `/otp-verify`, `/forgot-password`, `/reset-password` | Standalone account-entry and recovery layouts. Authentication is not connected yet. |
 | `src/app/(panels)/user` | `/user/dashboard`, `/user/orders`, `/user/orders/[orderId]`, `/user/wallet`, `/user/wishlist` (15 pages) | Customer dashboard shell (sidebar + topbar) and account pages. |
-| `src/app/(panels)/vendor` | `/vendor` (placeholder) | Future seller/provider shell — reuse `src/components/dashboard` pattern. |
-| `src/app/(panels)/admin` | `/admin` (placeholder) | Future staff shell — reuse `src/components/dashboard` pattern. |
+| `src/app/(panels)/vendor` | `/vendor/dashboard`, `/vendor/orders`, `/vendor/products`, `/vendor/payouts` (31 pages) | Seller/provider dashboard shell (sidebar + topbar) and business pages. |
+| `src/app/(panels)/admin` | `/admin` (placeholder) | Future staff shell — reuse `src/components/dashboard` pattern and `features/admin` scaffold. |
 | `src/app/not-found.tsx` | unmatched URL | Shared storefront-styled 404 response. |
 
 The other public routes (categories, offers, search, product/service details, policies, help, onboarding, etc.) follow the same split: a small `app` route file and a feature-owned page component.
@@ -27,14 +27,14 @@ src/
     (auth)/                       # sign-in/register/recovery URLs and layout
     (panels)/
       user/                       # /user/* customer shell + 15 migrated pages
-      vendor/                     # /vendor/* placeholder shell
+      vendor/                     # /vendor/* seller/provider shell + 31 migrated pages
       admin/                      # /admin/* placeholder shell
     not-found.tsx
   components/
     shared/                       # cross-route client behavior for the current static templates
     catalog/                       # reusable product-card actions
     storefront/                   # announcement bar, header, footer, mobile nav, dialogs
-    dashboard/                    # shared shell for User/Vendor/Admin (sidebar, topbar, interactions)
+    dashboard/                    # shared shell for User/Vendor/Admin (config-driven sidebar/topbar, panel-config.ts contract, PageHeader, StatusBadge)
   features/
     home/pages/                    # homepage
     catalog/pages/                 # categories, listings, search, product detail, offers, brands
@@ -46,12 +46,17 @@ src/
     auth/pages/                    # account-entry and recovery screens
     user/                          # customer dashboard domain
       pages/                       # 15 migrated pages (dashboard, orders, bookings, wallet …)
-      components/                  # user-specific reusable UI (PageHeader, StatusBadge …)
+      lib/user-panel-config.tsx    # shell nav/brand/topbar for /user
+      lib/constants.ts
       types/user.ts                # DTO placeholders — replace with OpenAPI output
       api/user-api.ts              # apiRequest wrappers
+    vendor/                        # seller/provider dashboard domain
+      pages/                       # 31 migrated pages (products, orders, bookings, payouts …)
+      lib/vendor-panel-config.tsx  # shell nav/brand/topbar for /vendor
       lib/constants.ts
-    vendor/                        # future seller/provider domain (placeholder)
-    admin/                         # future platform ops domain (placeholder)
+      types/vendor.ts              # DTO placeholders — replace with OpenAPI output
+      api/vendor-api.ts            # apiRequest wrappers
+    admin/                         # future platform ops domain (scaffold: lib/admin-panel-config.tsx)
   lib/
     api/                           # shared HTTP client and normalized API error
     page-metadata.ts
@@ -65,23 +70,25 @@ src/
 
 Page files under `features/*/pages` preserve the existing static sample content. Keep route entrypoints thin: they should set route metadata and render the owning feature page, not duplicate the global header or footer. Put a new public feature in its domain folder; put its URL in the appropriate route group.
 
-## Panel architecture (User done, Vendor/Admin next)
+## Panel architecture (User + Vendor done, Admin next)
 
-Do not add dashboards to the public storefront layout. Each panel keeps an explicit URL prefix and its own layout/navigation:
+Do not add dashboards to the public storefront layout. Each panel keeps an explicit URL prefix, its own layout and its own shell config:
 
 ```text
 src/app/(panels)/user/layout.tsx       # /user/* customer shell and session check (done)
-src/app/(panels)/vendor/layout.tsx     # /vendor/* seller/provider shell and role check (placeholder)
+src/app/(panels)/vendor/layout.tsx     # /vendor/* seller/provider shell and role check (done)
 src/app/(panels)/admin/layout.tsx      # /admin/* staff shell and permission check (placeholder)
 
 src/features/user/                    # customer account, orders, addresses, bookings, etc. (15 pages migrated)
-src/features/vendor/                  # seller/provider operations and business profile (next)
-src/features/admin/                   # platform operations and moderation (next)
+src/features/vendor/                  # seller/provider operations — catalog, orders, services, finance (31 pages migrated)
+src/features/admin/                   # platform operations and moderation (scaffold waiting for migration)
 ```
 
-The User panel is complete and demonstrates the pattern to follow for Vendor/Admin. Each panel gets its own layout/navigation and feature-owned pages. Reuse the shared `src/components/dashboard` shell and neutral primitives from `src/components/shared` where appropriate, but do not make the storefront header responsible for dashboard permissions or panel state. Shared business concepts should be exposed through feature/domain APIs rather than imported from another panel's UI.
+Every panel layout renders the same shared `DashboardShell` and injects its own `PanelShellConfig` (`src/components/dashboard/panel-config.ts`) from `features/<panel>/lib/<panel>-panel-config.tsx`. The config declares the sidebar nav, brand subtitle, topbar search placeholder/primary action, badge counts, account menu and the signed-in identity. The shell owns the frame; the config owns everything panel-specific. To migrate Admin, extend `src/features/admin/lib/admin-panel-config.tsx`, add routes under `src/app/(panels)/admin/`, and add pages/types/api/constants under `src/features/admin/` — the User and Vendor panels are the reference implementations.
 
-Detailed map for the User panel lives in `src/features/user/README.md`.
+Reuse the shared `src/components/dashboard` shell and neutral primitives from `src/components/shared` where appropriate, but do not make the storefront header responsible for dashboard permissions or panel state. Shared business concepts should be exposed through feature/domain APIs rather than imported from another panel's UI.
+
+Detailed maps live in `src/features/user/README.md` and `src/features/vendor/README.md`.
 
 The NestJS API is the authority for identity, role membership, record ownership, and permissions. Route/layout checks improve navigation and user experience; every protected NestJS endpoint must independently enforce authorization. Never rely on hidden links or client-side role checks as access control.
 
@@ -108,7 +115,7 @@ src/features/auth/api/auth-api.ts
 
 Those functions call `apiRequest<T>()`; components/pages consume the feature function and never reconstruct endpoint strings or response shapes. Derive DTOs from NestJS's agreed OpenAPI/contract output instead of guessing field names. Keep DTOs next to the feature that owns them; move only genuinely shared API contracts to a deliberate shared-contract package.
 
-No feature API modules or endpoint assumptions are included yet because the NestJS application and its route/DTO contract have not been supplied.
+The panel features (`features/user/api`, `features/vendor/api`) already contain placeholder endpoint wrappers and DTO sketches derived from the static sample data; reconcile them with the real NestJS contract before wiring data into the UI. Public storefront domains have no feature API modules yet because the NestJS application and its route/DTO contract have not been supplied.
 
 ### Authentication and session handling
 

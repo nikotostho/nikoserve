@@ -1,0 +1,91 @@
+export default function ShopProfilePage() {
+  return (
+    <>
+      <div className="page-head"><div><nav className="crumb mb-1.5"><a href="/vendor/dashboard">Seller Centre</a><svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="m9 6 6 6-6 6"/></svg><span className="is-current">Product Business</span><svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="m9 6 6 6-6 6"/></svg><span className="is-current">Shop Profile</span></nav>
+      <h1>Shop Profile</h1><p>This is your product storefront — banners, story, policies and social links.</p></div>
+      <div className="flex flex-wrap items-center gap-2"><a href="/shop-profile" className="btn btn-sm btn-outline"><svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M2 12s3.5-6 10-6 10 6 10 6-3.5 6-10 6-10-6-10-6z"/><circle cx="12" cy="12" r="2.6"/></svg>View public page</a><button className="btn btn-sm btn-primary" data-toast="Shop profile saved"><svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Save changes</button></div></div>
+      <div className="grid lg:grid-cols-[minmax(0,1fr)_320px] gap-4">
+      <div className="space-y-4">
+      <div className="card "><div className="card-head"><h3>Store branding</h3><div className="flex items-center gap-2"></div></div><div className="p-5">
+      <label className="label">Cover banner (1920 × 420 px)</label>
+      <div className="relative rounded-xl overflow-hidden mb-4"><span className="ph ph-c h-36 w-full"><svg className="" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.3" strokeLinecap="round" strokeLinejoin="round"><path d="M4 8h16v12H4z"/><path d="M9 8V4h6v4"/></svg></span>
+      <button className="absolute bottom-3 right-3 btn btn-sm !bg-white/95"><svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M4 8h3l2-2h6l2 2h3v12H4z"/><circle cx="12" cy="14" r="3.2"/></svg>Change cover</button></div>
+      <div className="flex flex-wrap items-center gap-4 mb-4"><div className="relative"><span className="ph ph-a w-20 h-20 rounded-2xl"><svg className="" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.3" strokeLinecap="round" strokeLinejoin="round"><path d="M4 8h16v12H4z"/><path d="M9 8V4h6v4"/></svg></span>
+      <button className="absolute -bottom-1 -right-1 w-8 h-8 rounded-full bg-white border border-[#e7e9ef] grid place-items-center"><svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M4 8h3l2-2h6l2 2h3v12H4z"/><circle cx="12" cy="14" r="3.2"/></svg></button></div>
+      <div><p className="text-[13px] font-bold">Store logo</p><p className="text-[12px] text-ink-400">Square PNG or JPG, at least 400 × 400 px</p></div></div>
+      <div className="grid sm:grid-cols-2 gap-3.5">
+      <div className="sm:col-span-2"><label className="label">Store name <span className="req">*</span></label><input className="input" defaultValue="Rahim Electronics &amp; Services" /></div>
+      <div><label className="label">Store URL</label><div className="input-affix"><span className="affix">haatbazar.com.bd/shop/</span><input className="input" defaultValue="rahim-electronics" /></div></div>
+      <div><label className="label">Main category</label><select className="select"><option>Electronics &amp; Gadgets</option><option>Home Appliances</option><option>Fashion</option></select></div>
+      <div className="sm:col-span-2"><label className="label">Tagline</label><input className="input" defaultValue="Genuine electronics with warranty — since 2016" /></div>
+      <div className="sm:col-span-2"><label className="label">About the store</label><textarea className="textarea !min-h-[110px]" defaultValue="Rahim Electronics has been serving Dhaka since 2016 with 100% genuine, warranty-backed electronics. We also provide expert AC, fridge and CCTV services with certified technicians."></textarea></div></div></div></div>
+      <div className="card "><div className="card-head"><h3>Contact &amp; location</h3><div className="flex items-center gap-2"></div></div><div className="p-5 grid sm:grid-cols-2 gap-3.5">
+      <div><label className="label">Support phone <span className="req">*</span></label><input className="input" defaultValue="+880 1711-223344" /></div>
+      <div><label className="label">WhatsApp number</label><input className="input" defaultValue="+880 1711-223344" /></div>
+      <div><label className="label">Support email</label><input className="input" defaultValue="support@rahimelectronics.com" /></div>
+      <div><label className="label">Website</label><input className="input" placeholder="https://" /></div>
+      <div className="sm:col-span-2"><label className="label">Shop address</label><input className="input" defaultValue="Shop 12, Mirpur 10 Circle Market, Dhaka 1216" /></div>
+      <div><label className="label">Division</label><select className="select"><option>Dhaka</option><option>Chattogram</option><option>Sylhet</option></select></div>
+      <div><label className="label">District / City</label><select className="select"><option>Dhaka</option><option>Gazipur</option><option>Narayanganj</option></select></div>
+      <div><label className="label">Area / Thana</label><select className="select"><option>Mirpur</option><option>Pallabi</option><option>Kafrul</option></select></div>
+      <div><label className="label">Postcode</label><input className="input" defaultValue="1216" /></div>
+      <div className="sm:col-span-2"><label className="label">Pin location on map</label><div className="relative rounded-xl overflow-hidden"><span className="ph ph-f h-40 w-full"><svg className="" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.3" strokeLinecap="round" strokeLinejoin="round"><path d="M12 21s-7-5.5-7-11a7 7 0 1 1 14 0c0 5.5-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></svg></span>
+      <button className="absolute bottom-3 left-1/2 -translate-x-1/2 btn btn-sm !bg-white/95"><svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M12 21s-7-5.5-7-11a7 7 0 1 1 14 0c0 5.5-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></svg>Adjust pin</button></div></div></div></div>
+      <div className="card "><div className="card-head"><h3>Business hours</h3><div className="flex items-center gap-2"></div></div><div className="p-5 space-y-2"><div className="flex flex-wrap items-center gap-3">
+      <label className="switch shrink-0"><input type="checkbox" defaultChecked /><span className="track"></span></label>
+      <span className="text-[13px] font-bold w-24">Saturday</span>
+      <input type="time" className="input input-sm !w-[110px]" defaultValue="10:00" /><span className="text-ink-400 text-[12px]">to</span>
+      <input type="time" className="input input-sm !w-[110px]" defaultValue="21:00" />
+      <span className="badge badge-green">Open</span></div><div className="flex flex-wrap items-center gap-3">
+      <label className="switch shrink-0"><input type="checkbox" defaultChecked /><span className="track"></span></label>
+      <span className="text-[13px] font-bold w-24">Sunday</span>
+      <input type="time" className="input input-sm !w-[110px]" defaultValue="10:00" /><span className="text-ink-400 text-[12px]">to</span>
+      <input type="time" className="input input-sm !w-[110px]" defaultValue="21:00" />
+      <span className="badge badge-green">Open</span></div><div className="flex flex-wrap items-center gap-3">
+      <label className="switch shrink-0"><input type="checkbox" defaultChecked /><span className="track"></span></label>
+      <span className="text-[13px] font-bold w-24">Monday</span>
+      <input type="time" className="input input-sm !w-[110px]" defaultValue="10:00" /><span className="text-ink-400 text-[12px]">to</span>
+      <input type="time" className="input input-sm !w-[110px]" defaultValue="21:00" />
+      <span className="badge badge-green">Open</span></div><div className="flex flex-wrap items-center gap-3">
+      <label className="switch shrink-0"><input type="checkbox" defaultChecked /><span className="track"></span></label>
+      <span className="text-[13px] font-bold w-24">Tuesday</span>
+      <input type="time" className="input input-sm !w-[110px]" defaultValue="10:00" /><span className="text-ink-400 text-[12px]">to</span>
+      <input type="time" className="input input-sm !w-[110px]" defaultValue="21:00" />
+      <span className="badge badge-green">Open</span></div><div className="flex flex-wrap items-center gap-3">
+      <label className="switch shrink-0"><input type="checkbox" defaultChecked /><span className="track"></span></label>
+      <span className="text-[13px] font-bold w-24">Wednesday</span>
+      <input type="time" className="input input-sm !w-[110px]" defaultValue="10:00" /><span className="text-ink-400 text-[12px]">to</span>
+      <input type="time" className="input input-sm !w-[110px]" defaultValue="21:00" />
+      <span className="badge badge-green">Open</span></div><div className="flex flex-wrap items-center gap-3">
+      <label className="switch shrink-0"><input type="checkbox" defaultChecked /><span className="track"></span></label>
+      <span className="text-[13px] font-bold w-24">Thursday</span>
+      <input type="time" className="input input-sm !w-[110px]" defaultValue="10:00" /><span className="text-ink-400 text-[12px]">to</span>
+      <input type="time" className="input input-sm !w-[110px]" defaultValue="21:00" />
+      <span className="badge badge-green">Open</span></div><div className="flex flex-wrap items-center gap-3">
+      <label className="switch shrink-0"><input type="checkbox"  /><span className="track"></span></label>
+      <span className="text-[13px] font-bold w-24">Friday</span>
+      <input type="time" className="input input-sm !w-[110px]" defaultValue="10:00" /><span className="text-ink-400 text-[12px]">to</span>
+      <input type="time" className="input input-sm !w-[110px]" defaultValue="21:00" />
+      <span className="badge badge-red">Closed</span></div>
+      <div className="dotted-sep pt-3 mt-3"><label className="check"><input type="checkbox" />Temporarily close my shop (holiday mode)</label>
+      <p className="hint">While in holiday mode your products stay visible but cannot be ordered.</p></div></div></div>
+      <div className="card "><div className="card-head"><h3>Store policies</h3><div className="flex items-center gap-2"></div></div><div className="p-5 space-y-3.5">
+      <div><label className="label">Shipping policy</label><textarea className="textarea !min-h-[80px]" defaultValue="Orders inside Dhaka are dispatched the same day if placed before 4 PM. Outside Dhaka takes 2–3 working days."></textarea></div>
+      <div><label className="label">Return &amp; refund policy</label><textarea className="textarea !min-h-[80px]" defaultValue="7-day easy return for defective or wrong items. Product must be unused with original packaging and accessories."></textarea></div>
+      <div><label className="label">Warranty policy</label><textarea className="textarea !min-h-[80px]" defaultValue="All branded items carry official warranty. Service is provided by the brand's authorised centre; we assist with the claim."></textarea></div></div></div>
+      <div className="card "><div className="card-head"><h3>Social links</h3><div className="flex items-center gap-2"></div></div><div className="p-5 grid sm:grid-cols-2 gap-3.5"><div><label className="label">Facebook page</label><input className="input" placeholder="https://" /></div><div><label className="label">Instagram</label><input className="input" placeholder="https://" /></div><div><label className="label">YouTube channel</label><input className="input" placeholder="https://" /></div><div><label className="label">TikTok</label><input className="input" placeholder="https://" /></div></div></div>
+      </div>
+      <aside className="space-y-4">
+      <div className="card "><div className="card-head"><h3>Verification status</h3><div className="flex items-center gap-2"></div></div><div className="p-4 space-y-2.5"><p className="flex items-center gap-2 text-[12.5px] text-ink-700"><svg className="w-4 h-4 text-green-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Phone verified</p><p className="flex items-center gap-2 text-[12.5px] text-ink-700"><svg className="w-4 h-4 text-green-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Email verified</p><p className="flex items-center gap-2 text-[12.5px] text-ink-700"><svg className="w-4 h-4 text-green-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M20 6 9 17l-5-5"/></svg>NID verified</p><p className="flex items-center gap-2 text-[12.5px] text-ink-700"><svg className="w-4 h-4 text-green-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Trade licence uploaded</p><p className="flex items-center gap-2 text-[12.5px] text-ink-700"><svg className="w-4 h-4 text-green-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M20 6 9 17l-5-5"/></svg>TIN certificate</p><p className="flex items-center gap-2 text-[12.5px] text-ink-700"><svg className="w-4 h-4 text-green-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Bank account verified</p><p className="flex items-center gap-2 text-[12.5px] text-ink-400"><svg className="w-4 h-4 text-gold-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>Physical shop verified<a className="link ml-auto text-[11.5px]">Book visit</a></p>
+      <a href="/vendor/settings" className="btn btn-sm btn-outline btn-block mt-1">Manage documents</a></div></div>
+      <div className="card "><div className="card-head"><h3>Store badges earned</h3><div className="flex items-center gap-2"></div></div><div className="p-4 flex flex-wrap gap-2"><span className="badge badge-green"><svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M12 3l7 3v6c0 4.5-3 7.6-7 9-4-1.4-7-4.5-7-9V6z"/><path d="m9 12 2 2 4-4"/></svg>Verified vendor</span><span className="badge badge-amber"><svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="9" r="5"/><path d="m8.5 13.5-1.5 7 5-3 5 3-1.5-7"/></svg>Power Seller</span><span className="badge badge-blue"><svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M3 7h11v8H3zM14 10h4l3 3v2h-7z"/><circle cx="6.5" cy="17.5" r="1.5"/><circle cx="17.5" cy="17.5" r="1.5"/></svg>Fast shipper</span><span className="badge badge-teal"><svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="m12 2 2.9 6.3 6.8.7-5 4.6 1.4 6.7L12 17l-6.1 3.3L7.3 13.6l-5-4.6 6.8-.7z"/></svg>Top rated 4.8</span><span className="badge badge-purple"><svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M3 12a9 9 0 0 1 15-6.7L21 8"/><path d="M21 3v5h-5M21 12a9 9 0 0 1-15 6.7L3 16"/><path d="M3 21v-5h5"/></svg>Easy returns</span>
+      <p className="hint">Badges are awarded automatically based on your performance.</p></div></div>
+      <div className="card "><div className="card-head"><h3>Storefront preview</h3><div className="flex items-center gap-2"></div></div><div className="p-4"><div className="rounded-xl border border-[#e7e9ef] overflow-hidden"><span className="ph ph-b h-20 w-full"><svg className="" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.3" strokeLinecap="round" strokeLinejoin="round"><path d="M4 8h16v12H4z"/><path d="M9 8V4h6v4"/></svg></span>
+      <div className="p-3"><p className="text-[13px] font-extrabold">Rahim Electronics &amp; Services</p>
+      <div className="flex items-center gap-1 mt-0.5"><span className="stars "><svg viewBox="0 0 24 24" ><path d="m12 2 2.9 6.3 6.8.7-5 4.6 1.4 6.7L12 17l-6.1 3.3L7.3 13.6l-5-4.6 6.8-.7z"/></svg><svg viewBox="0 0 24 24" ><path d="m12 2 2.9 6.3 6.8.7-5 4.6 1.4 6.7L12 17l-6.1 3.3L7.3 13.6l-5-4.6 6.8-.7z"/></svg><svg viewBox="0 0 24 24" ><path d="m12 2 2.9 6.3 6.8.7-5 4.6 1.4 6.7L12 17l-6.1 3.3L7.3 13.6l-5-4.6 6.8-.7z"/></svg><svg viewBox="0 0 24 24" ><path d="m12 2 2.9 6.3 6.8.7-5 4.6 1.4 6.7L12 17l-6.1 3.3L7.3 13.6l-5-4.6 6.8-.7z"/></svg><svg viewBox="0 0 24 24" ><path d="m12 2 2.9 6.3 6.8.7-5 4.6 1.4 6.7L12 17l-6.1 3.3L7.3 13.6l-5-4.6 6.8-.7z"/></svg></span><span className="text-[11.5px] text-ink-400">4.8 (2,184)</span></div>
+      <p className="text-[11.5px] text-ink-500 mt-1">248 products · Mirpur, Dhaka</p></div></div>
+      <a href="/shop-profile" className="btn btn-sm btn-outline btn-block mt-3"><svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M2 12s3.5-6 10-6 10 6 10 6-3.5 6-10 6-10-6-10-6z"/><circle cx="12" cy="12" r="2.6"/></svg>Open public storefront</a></div></div>
+      </aside></div>
+    </>
+  );
+}
